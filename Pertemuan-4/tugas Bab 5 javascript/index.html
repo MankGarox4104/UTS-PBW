@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Nilai Mahasiswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 8px;
+            width: 100%;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cek Nilai Mahasiswa</h2>
+        <label for="nim">NIM:</label>
+        <input type="text" id="nim" placeholder="Masukkan NIM">
+        <label for="nilai">Nilai:</label>
+        <input type="number" id="nilai" placeholder="Masukkan Nilai">
+        <button onclick="cekNilai()">Cek Nilai</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function cekNilai() {
+            let nilai = document.getElementById("nilai").value;
+            let result = document.getElementById("result");
+            
+            if (nilai === "" || isNaN(nilai)) {
+                result.textContent = "Masukkan nilai yang valid!";
+                result.style.color = "red";
+                return;
+            }
+            
+            nilai = parseInt(nilai);
+            let hurufMutu;
+            
+            if (nilai >= 80 && nilai <= 100) {
+                hurufMutu = "A";
+            } else if (nilai >= 70 && nilai <= 79) {
+                hurufMutu = "B";
+            } else if (nilai >= 60 && nilai <= 69) {
+                hurufMutu = "C";
+            } else if (nilai >= 50 && nilai <= 59) {
+                hurufMutu = "D";
+            } else if (nilai >= 0 && nilai <= 49) {
+                hurufMutu = "E";
+            } else {
+                result.textContent = "Nilai tidak valid!";
+                result.style.color = "red";
+                return;
+            }
+            
+            result.textContent = "Huruf Mutu: " + hurufMutu;
+            result.style.color = "green";
+        }
+    </script>
+</body>
+</html>
